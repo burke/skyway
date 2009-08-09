@@ -1,13 +1,13 @@
-<project name="compojure" default="jar">
+<project name="skyway" default="jar">
   <description>
-    Compojure library package.
+    Skyway, a rails-like Web application framework for Clojure.
   </description>
 
   <property name="build.dir" location="classes"/>
   <property name="deps.dir" location="deps"/>
   <property name="source.dir" location="src"/>
   <property name="tests.dir" location="test"/>
-  <property name="compojure.jar" location="compojure.jar"/>
+  <property name="skyway.jar" location="skyway.jar"/>
   <property name="deps.file" value="deps.zip"/>
   <property name="deps.url" value="http://cloud.github.com/downloads/weavejester/compojure/${deps.file}"/>
 
@@ -20,7 +20,7 @@
   </path>
   
   <target name="clean" description="Remove generated files">
-    <delete file="${compojure.jar}"/>
+    <delete file="${skyway.jar}"/>
     <delete dir="${build.dir}"/>
   </target>
 
@@ -29,38 +29,38 @@
     <mkdir dir="${build.dir}"/>
   </target>
 
-  <target name="compile" depends="compile-compojure, compile-grizzly-server" description="Compile sources."/>
+  <target name="compile" depends="compile-skyway, compile-grizzly-server" description="Compile sources."/>
 
-  <target name="compile-compojure" depends="init" description="Compile compojure sources">
+  <target name="compile-skyway" depends="init" description="Compile skyway sources">
     <java classname="clojure.lang.Compile" fork="true">
       <sysproperty key="clojure.compile.path" value="${build.dir}"/>
       <classpath refid="classpath"/>
-      <arg value="compojure"/>
-      <arg value="compojure.control"/>
-      <arg value="compojure.html"/>
-      <arg value="compojure.html.gen"/>
-      <arg value="compojure.html.form-helpers"/>
-      <arg value="compojure.html.page-helpers"/>
-      <arg value="compojure.http"/>
-      <arg value="compojure.http.routes"/>
-      <arg value="compojure.http.request"/>
-      <arg value="compojure.http.response"/>
-      <arg value="compojure.http.session"/>
-      <arg value="compojure.http.servlet"/>
-      <arg value="compojure.http.helpers"/>
-      <arg value="compojure.ns-utils"/>
-      <arg value="compojure.server.common"/>
-      <arg value="compojure.server.jetty"/>
-      <arg value="compojure.str-utils"/>
-      <arg value="compojure.validation"/>
+      <arg value="skyway"/>
+      <arg value="skyway.control"/>
+      <arg value="skyway.html"/>
+      <arg value="skyway.html.gen"/>
+      <arg value="skyway.html.form-helpers"/>
+      <arg value="skyway.html.page-helpers"/>
+      <arg value="skyway.http"/>
+      <arg value="skyway.http.routes"/>
+      <arg value="skyway.http.request"/>
+      <arg value="skyway.http.response"/>
+      <arg value="skyway.http.session"/>
+      <arg value="skyway.http.servlet"/>
+      <arg value="skyway.http.helpers"/>
+      <arg value="skyway.ns-utils"/>
+      <arg value="skyway.server.common"/>
+      <arg value="skyway.server.jetty"/>
+      <arg value="skyway.str-utils"/>
+      <arg value="skyway.validation"/>
     </java>
   </target>
 
-  <target name="compile-grizzly-server" depends="compile-compojure" description="Compile Grizzly server" if="with.grizzly">
+  <target name="compile-grizzly-server" depends="compile-skyway" description="Compile Grizzly server" if="with.grizzly">
     <java classname="clojure.lang.Compile">
       <sysproperty key="clojure.compile.path" value="${build.dir}"/>
       <classpath refid="classpath"/>
-      <arg value="compojure.server.grizzly"/>
+      <arg value="skyway.server.grizzly"/>
     </java>
   </target>
 
@@ -75,7 +75,7 @@
   </target>
 
   <target name="jar" description="Create jar file" depends="compile">
-    <jar jarfile="${compojure.jar}">
+    <jar jarfile="${skyway.jar}">
       <path location="LICENSE"/>
       <fileset dir="${source.dir}" includes="**/*.clj"/>
       <fileset dir="${build.dir}" includes="**/*.class"/>

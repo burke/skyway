@@ -10,5 +10,5 @@
    :body (input-stream body)})
 
 (defn temp-file []
-  (doto (File/createTempFile "compojure" "test")
+  (doto (File/createTempFile "skyway" "test")
     (.deleteOnExit)))

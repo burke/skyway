@@ -1,26 +1,26 @@
 (ns test.run
   (:use clojure.contrib.test-is)
-  (:require test.compojure.crypto)
-  (:require test.compojure.html.gen)
-  (:require test.compojure.html.form-helpers)
-  (:require test.compojure.http.helpers)
-  (:require test.compojure.http.middleware)
-  (:require test.compojure.http.routes)
-  (:require test.compojure.http.request)
-  (:require test.compojure.http.response)
-  (:require test.compojure.http.session)
-  (:require test.compojure.str-utils)
-  (:require test.compojure.validation))
+  (:require test.skyway.crypto)
+  (:require test.skyway.html.gen)
+  (:require test.skyway.html.form-helpers)
+  (:require test.skyway.http.helpers)
+  (:require test.skyway.http.middleware)
+  (:require test.skyway.http.routes)
+  (:require test.skyway.http.request)
+  (:require test.skyway.http.response)
+  (:require test.skyway.http.session)
+  (:require test.skyway.str-utils)
+  (:require test.skyway.validation))
 
 (run-tests
-  'test.compojure.crypto
-  'test.compojure.html.gen
-  'test.compojure.html.form-helpers
-  'test.compojure.http.helpers
-  'test.compojure.http.middleware
-  'test.compojure.http.routes
-  'test.compojure.http.request
-  'test.compojure.http.response
-  'test.compojure.http.session
-  'test.compojure.str-utils
-  'test.compojure.validation)
+  'test.skyway.crypto
+  'test.skyway.html.gen
+  'test.skyway.html.form-helpers
+  'test.skyway.http.helpers
+  'test.skyway.http.middleware
+  'test.skyway.http.routes
+  'test.skyway.http.request
+  'test.skyway.http.response
+  'test.skyway.http.session
+  'test.skyway.str-utils
+  'test.skyway.validation)
