@@ -38,17 +38,43 @@
           :lang lang}
     contents])
 
+(defn locate-asset
+  [asset ext dir]
+  (if (or (re-matches #"^[a-z]+://" asset)
+          (= (.charAt asset 0) \/))
+    asset
+    (let [asset  (str dir asset)
+          pattern (re-pattern (str "\\." ext "$"))]
+      (if (and ext (not (re-find pattern asset)))
+        (str asset "." ext)
+        asset))))
+
+(defn locate-js
+  "Convert a possibly-shorthand javascript location to a valid one."
+  [script]
+  (locate-asset script "js" "/javascripts/"))
+
+(defn locate-css
+  "Convert a possibly-shorthand css location to a valid one."
+  [style]
+  (locate-asset style "css" "/stylesheets/"))
+
+(defn locate-image
+  "Convert a possibly-shorthand image location to a valid one."
+  [image]
+  (locate-asset image nil "/images/"))
+
 (defn include-js
   "Include a list of external javascript files."
   [& scripts]
   (domap [script scripts]
-    [:script {:type "text/javascript" :src script}]))
+    [:script {:type "text/javascript" :src (locate-js script)}]))
 
 (defn include-css
   "Include a list of external stylesheet files."
   [& styles]
   (domap [style styles]
-    [:link {:type "text/css" :href style :rel "stylesheet"}]))
+    [:link {:type "text/css" :href (locate-css style) :rel "stylesheet"}]))
 
 (defn javascript-tag
   "Wrap the supplied javascript up in script tags and a CDATA section."

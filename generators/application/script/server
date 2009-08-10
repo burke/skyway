@@ -1,0 +1,3 @@
+#!/bin/sh
+
+java -cp `ls ~/src/skyway/deps/* | tr "\n" ":"` clojure.lang.Script application/run.clj
