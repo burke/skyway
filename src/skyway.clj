@@ -14,6 +14,7 @@
 
 (immigrate
   'skyway.control
+  'skyway.mvc
   'skyway.html.gen
   'skyway.html.page-helpers
   'skyway.html.form-helpers

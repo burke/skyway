@@ -6,7 +6,16 @@
 ;; terms of this license. You must not remove this notice, or any other, from
 ;; this software.
 
-(ns skyway.ns-utils)
+(in-ns 'clojure.core)
+(defmacro sky-ns
+  ""
+  [name & rest]
+  (let [full-name (symbol (str "application." name))]
+    `(ns ~full-name
+       (:use ~'skyway)
+       ~@rest)))
+
+(ns skyway.ns-utils) ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defn immigrate
  "Create a public var in this namespace for each public var in the
