@@ -1,6 +1,6 @@
-(sky-ns view layouts.default)
+(sky-ns layout default)
 
-(defview layouts.default
+(deflayout default
   [title & rest]
   `(str (doctype :xhtml-strict)
         (html (xhtml-tag "en"
@@ -8,4 +8,7 @@
                 (include-css "style")
                 (include-js  "jquery" "jquery.autocomplete" "jquery.facelist")
                 [:title ~title]]
-               [:body ~@rest]))))
+               [:body
+                [:h3 "I'm in ur layout."]
+                [:hr]
+                ~@rest]))))
