@@ -1,8 +1,6 @@
-(ns application.views.layouts.default
-  (:use skyway))
+(sky-ns view layouts.default)
 
-(defmacro render
-  ""
+(defview layouts.default
   [title & rest]
   `(str (doctype :xhtml-strict)
         (html (xhtml-tag "en"
@@ -11,4 +9,3 @@
                 (include-js  "jquery" "jquery.autocomplete" "jquery.facelist")
                 [:title ~title]]
                [:body ~@rest]))))
-

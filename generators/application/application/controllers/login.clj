@@ -1,5 +1,5 @@
-(ns application.controllers.login
-  (:use skyway))
+(sky-ns controller login)
 
-(defn invoke []
-  "hi!!!")
+(defcontroller login []
+  (html [:h1 "hi."]))
+

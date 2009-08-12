@@ -6,11 +6,12 @@
 ;; terms of this license. You must not remove this notice, or any other, from
 ;; this software.
 
+;;; NB: -----V----- adding function to clojure.core.
 (in-ns 'clojure.core)
 (defmacro sky-ns
   ""
-  [name & rest]
-  (let [full-name (symbol (str "application." name))]
+  [type name & rest]
+  (let [full-name (symbol (str "application." type "s." name))] ;; TODO: add robustity, usefulication.
     `(ns ~full-name
        (:use ~'skyway)
        ~@rest)))

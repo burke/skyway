@@ -1,7 +1,9 @@
-(sky-ns config.routes)
+(ns application.config.routes
+  (:use skyway))
+
+(require 'application.controllers.login)
 
 (defroutes application-routes
-  (GET   "/"      (html [:p "hi"]))
-  (GET   "/login" (invoke-controller login))
+  (GET   "/login" (invoke-controller 'login))
   (ANY   "*"      (page-not-found)))
 
